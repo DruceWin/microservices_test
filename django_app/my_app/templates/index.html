@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>DJANGO PAGE</h1>
+<div>
+    <h3>FastAPI</h3>
+</div>
+<div>
+    <h3>Flask</h3>
+</div>
+<script>
+    fetch('http://127.0.0.1:3000', {
+        method: "GET",
+        headers: {
+            "weather": "weather_fastapi"
+        }
+    }).then(resp => resp.json()).then(weather => console.log(weather))
+</script>
+
+</body>
+</html>
