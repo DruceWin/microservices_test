@@ -6,19 +6,35 @@
 </head>
 <body>
 <h1>DJANGO PAGE</h1>
-<div>
+<div style="width: 100%; height: 20%; border: 1px solid #9C1A1C; margin-bottom: 10px">
     <h3>FastAPI</h3>
+    <div id="weather_data"></div>
 </div>
-<div>
+<div style="width: 100%; height: 20%; border: 1px solid #9C1A1C;">
     <h3>Flask</h3>
+    <div id="bank_data"></div>
 </div>
 <script>
-    fetch('http://127.0.0.1:3000', {
+    setInterval(()=>fetch('http://127.0.0.1:8050/weather', {
         method: "GET",
-        headers: {
-            "weather": "weather_fastapi"
-        }
-    }).then(resp => resp.json()).then(weather => console.log(weather))
+        // headers: {
+        //     "weather": "weather_fastapi"
+        // }
+    }).then(resp => resp.json())
+        .then(weather => {
+            let a = document.getElementById('weather_data')
+            a.innerHTML=`${weather.message}`
+        }), 10000)
+    setInterval(()=>fetch('http://127.0.0.1:8050/bank', {
+        method: "GET",
+        // headers: {
+        //     "weather": "weather_fastapi"
+        // }
+    }).then(resp => resp.json())
+        .then(weather => {
+            let b = document.getElementById('bank_data')
+            b.innerHTML=`${weather.message}`
+        }), 10000)
 </script>
 
 </body>
